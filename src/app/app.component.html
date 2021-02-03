@@ -39,5 +39,6 @@
 	</ng-container>
 
 	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-	<tr mat-row *matRowDef="let row = index; columns: displayedColumns;" let i="index" (mouseover)="rowClick(row)"></tr>
+	<tr mat-row *matRowDef="let row = index; columns: displayedColumns;" let i="index" (mouseover)="rowClick(row)"
+		(mouseout)="rowClick(null)"></tr>
 </table>
