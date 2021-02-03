@@ -37,13 +37,15 @@ export class AppComponent {
   secondTableDataSource = ELEMENT_DATA1;
   rowNo: any;
 
-  drop(event: CdkDragDrop<any>, row) {
+  drop(event: CdkDragDrop<any>) {
+    console.log(event.container.data)
     if(this.rowNo!=null){
       this.secondTableDataSource[this.rowNo].analytical_Function.push(event.container.data)
     }
   }
 
   rowClick(row){
+    console.log(row)
     this.rowNo = row;
   }
 }
