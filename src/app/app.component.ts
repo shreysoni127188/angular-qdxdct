@@ -16,6 +16,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 6,  analytical_Function: ['function7', 'function8'] }
 ];
 
+const ELEMENT_DATA1: PeriodicElement[] = [
+  { position: 1, analytical_Function: ['function1', 'function2'] },
+  { position: 2, analytical_Function: ['function3'] },
+  { position: 3, analytical_Function: ['function4', 'function5'] },
+  { position: 4, analytical_Function: [] },
+  { position: 5, analytical_Function: ['function6'] },
+  { position: 6,  analytical_Function: ['function7', 'function8'] }
+];
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -25,18 +34,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AppComponent {
   displayedColumns: string[] = ['position',  'analytical_Function'];
   dataSource = ELEMENT_DATA;
-
+  secondTableDataSource = ELEMENT_DATA1;
+  rowNo: any;
 
   drop(event: CdkDragDrop<any>, row) {
-    console.log(event.container.data+" row: "+row)
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    // } else {
-    //   transferArrayItem(event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex);
+    if(this.rowNo!=null){
+      this.secondTableDataSource[this.rowNo].analytical_Function.push(event.container.data)
+    }
+  }
 
-    // }
+  rowClick(row){
+    this.rowNo = row;
   }
 }
